@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta content="Asciidoctor 1.5.2" name="generator">
+<title>Quality Attributes and Test Driven Development</title>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js"></script>
+<script>document.addEventListener('DOMContentLoaded', prettyPrint)</script>
+<link href="deck.js/core/deck.core.css" rel="stylesheet">
+<link href="deck.js/extensions/scale/deck.scale.css" media="screen" rel="stylesheet">
+<link href="deck.js/extensions/menu/deck.menu.css" media="screen" rel="stylesheet">
+<link href="deck.js/themes/style/web-2.0.css" media="screen" rel="stylesheet">
+<link href="deck.js/themes/transition/fade.css" media="screen" rel="stylesheet">
+<link href="custom.css" rel="stylesheet">
+<link href="deck.js/core/print.css" media="print" rel="stylesheet">
+<script src="deck.js/modernizr.custom.js"></script>
+</head>
+<body class="article">
+<div class="deck-container">
+<section class="slide" id="title-slide">
+<h1>Quality Attributes and Test Driven Development</h1>
+</section>
+<section class="slide" id="_what_is_software_quality_attributes">
+<h2>What is software Quality Attributes?</h2>
+<div class="ulist">
+<ul>
+<li class="slide"><p>
+<strong>Availability</strong><div class="ulist">
+<ul>
+<li>Concerned with the <strong>probability that the system will be operational when needed</strong>.</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+<strong>Reliability</strong><div class="ulist">
+<ul>
+<li>Concerned with the ability of the <strong>system to deliver services as specified</strong>.</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+<strong>Safety</strong><div class="ulist">
+<ul>
+<li>Concerned with the ability of the system <strong>to operate without catastrophic failure</strong>.</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+<strong>Security</strong><div class="ulist">
+<ul>
+<li>Concerned with the systems <strong>ability to withstand attacks/threats</strong>.</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+<strong>Analyzability</strong><div class="ulist">
+<ul>
+<li>Concerned with the <strong>capability of the software to be diagnosed for causes of failures</strong>.</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+<strong>Modifiability</strong><div class="ulist">
+<ul>
+<li>Concerned with the <strong>ease with which the system supports change and modifications</strong>.</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+<strong>Stability</strong><div class="ulist">
+<ul>
+<li>Concerned with the capability of <strong>the software to avoid unexpected effects from modifications</strong>.</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+<strong>Testability</strong><div class="ulist">
+<ul>
+<li>Concerned with the <strong>ease with which the software can be made to demonstrate its faults</strong>.</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+<strong>Performance</strong><div class="ulist">
+<ul>
+<li>Concerned with <strong>how long it takes the system to respond when an event occurs</strong>.</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+<strong>Usability</strong><div class="ulist">
+<ul>
+<li>Concerned with <strong>how easy it is for the user to accomplish a desired task</strong> and the kind of user support the system provides.</li>
+</ul>
+</div></p></li>
+<li class="slide"><strong>And more&#8230;&#8203;</strong></li>
+</ul>
+</div>
+</section>
+<section class="slide" id="_tree_of_qualities_and_sub_qualities">
+<h2>Tree of Qualities and Sub-qualities</h2>
+<div class="imageblock">
+<div class="content">
+<img alt="Dependability" src="ReliabilityGraph.png">
+</div>
+</div>
+</section>
+<section class="slide" id="__we_want_them_all">
+<h2>“We want them all!”</h2>
+<div class="paragraph"><p>Many qualities are in direct conflict – they must be balanced</p></div>
+<div class="ulist">
+<ul>
+<li><p>
+modifiability and performance<div class="ulist">
+<ul>
+<li>many delegations costs in execution speed – and memory footprint</li>
+</ul>
+</div></p></li>
+<li><p>
+cost and reusability<div class="ulist">
+<ul>
+<li>highly flexible software costs time, effort, and money</li>
+</ul>
+</div></p></li>
+<li><p>
+security and availability<div class="ulist">
+<ul>
+<li>availability through redundancy – increase opportunities of attack</li>
+</ul>
+</div></p></li>
+<li>etc.</li>
+</ul>
+</div>
+</section>
+<section class="slide" id="_there_is_no_good_or_bad_software">
+<h2>There is no good or bad software!</h2>
+<div class="ulist">
+<ul>
+<li><p>
+There is software that measure differently on the different qualities<div class="ulist">
+<ul>
+<li>Fast but difficult to change</li>
+<li>Modifiable but performs less</li>
+<li>Etc.</li>
+</ul>
+</div></p></li>
+</ul>
+</div>
+</section>
+<section class="slide" id="_terminology">
+<h2>Terminology</h2>
+<div class="ulist">
+<ul>
+<li class="slide"><p>
+Error<div class="ulist">
+<ul>
+<li>mistake, misconception, or misunderstanding by developer</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+Defect (bug)<div class="ulist">
+<ul>
+<li>anomaly in software that may cause it to behave incorrectly, and not according to specification</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+Failure<div class="ulist">
+<ul>
+<li>inability of software unit to perform its required functions within specified performance requirements</li>
+</ul>
+</div></p></li>
+</ul>
+</div>
+<section class="slide" id="_relations">
+<h2>Relations</h2>
+<div class="paragraph"><p>Failure = behavioural malfunction (run-time)</p></div>
+<div class="paragraph"><p>Defect = code anomaly (compile-time)</p></div>
+<div class="paragraph"><p>Does defects lead to failure?</p></div>
+<div class="paragraph"><p>Not always. Not all defects leads to failures and not all failures occurs because of a defect.</p></div>
+</section>
+</section>
+<section class="slide" id="_reliability_and_failure">
+<h2>Reliability and failure</h2>
+<div class="paragraph"><p><strong>Another definition of Reliability:</strong>
+Probability that a software system will not cause the failure of the system for a specified time under specified conditions.</p></div>
+<section class="slide" id="_ensuring_reliability">
+<h2>Ensuring Reliability</h2>
+<div class="paragraph"><p>Reliability is compromised by failures. Failures happen when the system is in an error state, which may be caused by a defect. So – reliability can be enhanced by several measures.</p></div>
+<div class="ulist">
+<ul>
+<li><strong>Fault avoidance</strong> simply avoid introducing defects!</li>
+<li><strong>Fault detection and removal</strong> Find and remove the defects before they cause failures.</li>
+<li><strong>Fault tolerance</strong> Ensure that defects does not lead to failures.</li>
+</ul>
+</div>
+</section>
+</section>
+<section class="slide" id="_fault_avoidance">
+<h2>Fault avoidance</h2>
+<div class="paragraph"><p>Use methods, tools, languages, techniques that are known to minimize the probability of introducing defects.</p></div>
+<div class="paragraph"><p><strong>That is:</strong> Never use C or C++ or PHP for that matter :)</p></div>
+<div class="paragraph"><p>Use safe languages (Java, C#, etc.)</p></div>
+<div class="paragraph"><p>Use proven design techniques</p></div>
+<div class="ulist">
+<ul>
+<li>encapsulation, favor object composition over class inheritance, design patterns, etc.</li>
+</ul>
+</div>
+</section>
+<section class="slide" id="_fault_detection_and_removal">
+<h2>Fault detection and removal</h2>
+<div class="paragraph"><p>Hunt down the defects by whatever means (automated tests, review) and remove them.</p></div>
+</section>
+<section class="slide" id="_fault_tolerance">
+<h2>Fault tolerance</h2>
+<div class="paragraph"><p>We know that we cannot remove all defects, but we can do something to ensure they don&#8217;t lead to failures.</p></div>
+<div class="ulist">
+<ul>
+<li>Replication and fail-over</li>
+<li>Graceful degradation</li>
+<li>Decoupling middleware</li>
+<li>etc.</li>
+</ul>
+</div>
+</section>
+<section class="slide" id="_so_far">
+<h2>So far</h2>
+<div class="paragraph"><p>Quality is many things and there are several views on quality, all, however, must deal with Reliability.</p></div>
+<div class="ulist">
+<ul>
+<li><strong>Reliability:</strong> Probability that a software system will not cause the failure of the system for a specified time under specified conditions.</li>
+</ul>
+</div>
+<div class="paragraph"><p>Reliability techniques</p></div>
+<div class="ulist">
+<ul>
+<li>fault avoidance, <strong>fault detection and removal</strong>, fault tolerance</li>
+</ul>
+</div>
+<div class="paragraph"><p>Not all tests are equalliy important for reliability, so, the testing "budget" should be used wisely.</p></div>
+<section class="slide" id="_we_use_testing_to_help_ensure_reliability">
+<h2>We use testing to help ensure reliability.</h2>
+
+</section>
+</section>
+<section class="slide" id="_but_first_some_clerification">
+<h2>But first some clerification</h2>
+<div class="paragraph slide"><p><strong>What is Review?</strong></p></div>
+<div class="ulist">
+<ul>
+<li class="slide"><p>
+Review of code, requirement specificaiton, system design, system architecture<div class="ulist">
+<ul>
+<li>Defects can occur in all of the above</li>
+</ul>
+</div></p></li>
+</ul>
+</div>
+<div class="paragraph slide"><p><strong>What is Unit Testing?</strong></p></div>
+<div class="ulist">
+<ul>
+<li class="slide"><p>
+Is an automated black-box testing technique with the goal of revealing defects in individual software units<div class="ulist">
+<ul>
+<li>In my opinion, a software unit is a single class</li>
+</ul>
+</div></p></li>
+</ul>
+</div>
+<div class="paragraph slide"><p><strong>What is Integration Testing?</strong></p></div>
+<div class="ulist">
+<ul>
+<li class="slide"><p>
+Is an automated black-box testing technique in which individual units are combined and tested as a group<div class="ulist">
+<ul>
+<li>We integrate one unit into the group at a time</li>
+<li><strong>Methods</strong> Big Bang, Top-down, Bottom-up</li>
+</ul>
+</div></p></li>
+</ul>
+</div>
+<div class="paragraph slide"><p><strong>What is System Testing?</strong></p></div>
+<div class="ulist">
+<ul>
+<li class="slide"><p>
+Are tests conducted on a complete, integrated system to evaluate the system&#8217;s compliance with its specified requirements<div class="ulist">
+<ul>
+<li><p>
+Some types are:<div class="ulist">
+<ul>
+<li><em>Usability testing</em>, <em>Performance testing</em>, <em>Stress testing</em> (Over normal operation), <em>Load testing</em> (Within normal operation), <em>Regression testing</em>, <em>Recovery testing</em>, <em>Scalability testing</em>, <em>Security testing</em>, <em>Smoke testing</em>, etc.</li>
+</ul>
+</div></p></li>
+</ul>
+</div></p></li>
+</ul>
+</div>
+</section>
+<section class="slide" id="_basic_principles_of_testing">
+<h2>Basic Principles of Testing</h2>
+<div class="ulist">
+<ul>
+<li class="slide"><p>
+Testing is an execution based process with the intent of a) reveal defects b) evaluate quality<div class="ulist">
+<ul>
+<li><p>
+finding failures by executing software units - and hopefully identify the defect that caused it<div class="ulist">
+<ul>
+<li>this is in contrast to inspection based processes like reviews</li>
+</ul>
+</div></p></li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+A good test case has a high probability to reveal an undetected defect<div class="ulist">
+<ul>
+<li>write as few tests as possible that will find as many defects as possible</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+Test case must contain the expected output<div class="ulist">
+<ul>
+<li>it is not something the tester should guess about</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+Test cases should be developed for both valid and invalid input conditions<div class="ulist">
+<ul>
+<li>it is often the error handling code that is tested least</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+The probability of additional defects in a component is proportional to the number already detected in it<div class="ulist">
+<ul>
+<li>due to high complexity or poor design</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+Tests must be repeatable and reusable<div class="ulist">
+<ul>
+<li>write them down clearly or even better: automate them</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+Testing should be planned<div class="ulist">
+<ul>
+<li><p>
+make plans and objectives for each type of testing<div class="ulist">
+<ul>
+<li>unit, integration, system</li>
+</ul>
+</div></p></li>
+</ul>
+</div></p></li>
+<li class="slide">Testing activities should be integrated into the software life cycle</li>
+<li class="slide">Creating good tests is a creative and challenging process</li>
+</ul>
+</div>
+</section>
+<section class="slide" id="_some_psychology_is_involved">
+<h2>Some psychology is involved</h2>
+<div class="paragraph"><p>Humans are goal oriented.</p></div>
+<div class="ulist">
+<ul>
+<li>We want success and rewards and avoid failures</li>
+</ul>
+</div>
+<section class="slide" id="_think_destructive">
+<h2>Think destructive!</h2>
+<div class="paragraph"><p>Testing is a destructive process</p></div>
+<div class="ulist">
+<ul>
+<li>In contrast to almost all other software processes which are constructive</li>
+<li>Human psychology tells us "I want to be successful"</li>
+</ul>
+</div>
+<div class="paragraph"><p>Instead of thinking <strong><em>I will prove my software works</em></strong> think like this indtead <strong><em>I will prove my software is really lousy</em></strong></p></div>
+<section class="slide" id="_reprogram_your_brain">
+<h2>Reprogram your brain</h2>
+<div class="paragraph"><p><strong>I am a success if I find a defect. The more I find, the better I am!</strong></p></div>
+</section>
+</section>
+</section>
+<section class="slide" id="_test_driven_development">
+<h2>Test Driven Development</h2>
+<section class="slide" id="_key_values">
+<h2>Key values</h2>
+<div class="ulist">
+<ul>
+<li><p>
+<strong>Keep focus</strong><div class="ulist">
+<ul>
+<li><p>
+Make one thing only, at a time!<div class="ulist">
+<ul>
+<li>Often we think: Fixing this, requires fixing that, hey this could be smarter, fixing it, ohh, I could move that to a library&#8230;&#8203;</li>
+</ul>
+</div></p></li>
+</ul>
+</div></p></li>
+<li><p>
+<strong>Take small steps</strong><div class="ulist">
+<ul>
+<li><p>
+Taking small steps allow you to backtrack easily when things becomes messy<div class="ulist">
+<ul>
+<li>Often: I can do it by introducing these two classes, humm, no no, I need a third, oh wait&#8230;&#8203;</li>
+</ul>
+</div></p></li>
+</ul>
+</div></p></li>
+<li><p>
+<strong>Speed</strong><div class="ulist">
+<ul>
+<li>Deliver often, every 14 days is a good measure</li>
+<li>Speed, not by being sloppy but by making less functionality of superior quality</li>
+</ul>
+</div></p></li>
+<li><p>
+<strong>Simplicity</strong><div class="ulist">
+<ul>
+<li><p>
+Maximize the amount of work <em>not done!</em><div class="ulist">
+<ul>
+<li>Often: I can make a wonderful recursive solution parameterized for situations X, Y and Z</li>
+</ul>
+</div></p></li>
+</ul>
+</div></p></li>
+</ul>
+</div>
+</section>
+</section>
+<section class="slide" id="_a_structured_process">
+<h2>A structured process</h2>
+<div class="paragraph"><p>TDD replaces <em>tacit knowledge</em> with a formulated process</p></div>
+<div class="ulist">
+<ul>
+<li><p>
+The TDD rhythm<div class="ulist">
+<ul>
+<li><strong>five steps</strong> that are each highly focussed and fast-paced iteration</li>
+</ul>
+</div></p></li>
+<li><p>
+Testing principles<div class="ulist">
+<ul>
+<li>The <strong>testing principles</strong> that defines a term for a specific action to make in each step</li>
+</ul>
+</div></p></li>
+</ul>
+</div>
+</section>
+<section class="slide" id="_the_tdd_rhythm">
+<h2>The TDD Rhythm</h2>
+<div class="ulist">
+<ul>
+<li>Add a small test</li>
+<li>Run all tests and see the new one fail</li>
+<li>Make a small change</li>
+<li>Run all tests and see them all succeed</li>
+<li>Refactor to remove duplications</li>
+</ul>
+</div>
+<div class="paragraph"><p>All 5 steps makes one iteration. Each iteration is small, sypically adding a very small increment of behaviour to the system.</p></div>
+<div class="paragraph"><p>An iteration typically lasts from 1 to 15 minutes. If it is much bigger it is usually a sign that you are not taking <em>small steps</em>, and have lost <em>focus</em>.</p></div>
+</section>
+<section class="slide" id="_the_tdd_principles">
+<h2>The TDD principles</h2>
+<div class="ulist">
+<ul>
+<li class="slide"><p>
+<strong>Automated tests</strong><div class="ulist">
+<ul>
+<li><p>
+How do you test your software? Write an automated test<div class="ulist">
+<ul>
+<li>Often developers consider tests something stakeholders are interested in, and that tests are boring</li>
+<li><p>
+But, tests are something that we should do for our own sake<div class="ulist">
+<ul>
+<li>to have confidence in our code</li>
+<li>to dare change code radically</li>
+<li>to know when we are done</li>
+<li>to sleep better at night :)</li>
+</ul>
+</div></p></li>
+</ul>
+</div></p></li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+<strong>Test First</strong><div class="ulist">
+<ul>
+<li>When should we write our tests? Before we write the code that is to be tested. Because you don&#8217;t test after :)</li>
+<li>Production code needs to be driven into existence, meaning that you as a developer need to be driven into writing production code because you need it for your tests</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+<strong>Test List</strong><div class="ulist">
+<ul>
+<li>What should you test? Before you begin, write a list of all the test you know you will have to write. Add to the list as you find new potential tests</li>
+</ul>
+</div></p></li>
+</ul>
+</div>
+</section>
+<section class="slide" id="_the_tdd_principles_2">
+<h2>The TDD principles</h2>
+<div class="ulist">
+<ul>
+<li class="slide"><p>
+<strong>One step test</strong><div class="ulist">
+<ul>
+<li>Which test should you pick next from the list? Pick a test that will teach you something and that you are confident you can implement</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+<strong>Fake It (<em>Til you make it</em>)</strong><div class="ulist">
+<ul>
+<li><p>
+What is your first implementation once you have a broken test? Return a constant. Once you have your test running, gradually transform it<div class="ulist">
+<ul>
+<li>Because it helps you keep focus, and you risk implementing a solution that is wrong and needs to be deleted a moment later, or you are lead to implementing all sorts of other code</li>
+<li>Because you move faster by making small steps rapidly than running, fallling, and crawling back up all the time&#8230;&#8203;</li>
+</ul>
+</div></p></li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+<strong>Trinagulation</strong><div class="ulist">
+<ul>
+<li><p>
+How do you most conservatively drive abstraction with tests? Abstract only when you have two or more examples<div class="ulist">
+<ul>
+<li>The point is that one test case is not enough to ensure a reliable implementation when you have abstraction</li>
+<li>e.g. if you make use of the <em>Fake it</em> principle, you might have a method that returns a constant, because that is enough to make the test pass. The conservative way to drive a more correct implementation is to add more stories/scenarios &#8658; more test cases</li>
+</ul>
+</div></p></li>
+</ul>
+</div></p></li>
+</ul>
+</div>
+</section>
+<section class="slide" id="_the_tdd_principles_3">
+<h2>The TDD principles</h2>
+<div class="ulist">
+<ul>
+<li class="slide"><p>
+<strong>Isolated test</strong><div class="ulist">
+<ul>
+<li><p>
+How should the running of tests affect one another? They should not<div class="ulist">
+<ul>
+<li>Isolated Test guards you against the <em>ripple effect</em> meaning all tests fail because of one single problem</li>
+<li>Isolate in order to review failure consequences</li>
+</ul>
+</div></p></li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+<strong>Evident data</strong><div class="ulist">
+<ul>
+<li>How do you represent the intent of the data? Include expected and actual results in the test itself, and make their relationship apparent. You are writing tests for the reader, not just the computer. This way tests becomes a part of your documentation</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+<strong>Representative data</strong><div class="ulist">
+<ul>
+<li>What data do you use for tests? Select a small set of data where each element represents a conceptual aspect or a special computational process</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+<strong>Assert first</strong><div class="ulist">
+<ul>
+<li>When should you write the asserts? Write them first</li>
+</ul>
+</div></p></li>
+</ul>
+</div>
+</section>
+<section class="slide" id="_the_tdd_principles_4">
+<h2>The TDD principles</h2>
+<div class="ulist">
+<ul>
+<li class="slide"><p>
+<strong>Obvious implementation</strong><div class="ulist">
+<ul>
+<li><p>
+How do you implement simple operation? Just implement them<div class="ulist">
+<ul>
+<li><p>
+The <em>Fake it and Triangulation</em> principles are great for driving algorithm development. However the really trivial code we simply implement<div class="ulist">
+<ul>
+<li>No need to test get/set methods or really simple methods, that is code of 3-5 lines of simple complexity</li>
+</ul>
+</div></p></li>
+</ul>
+</div></p></li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+<strong>Evident tests</strong><div class="ulist">
+<ul>
+<li><p>
+How do we avoid writing deffective tests? By keeping the testing code evident, readable, and as simple as possible<div class="ulist">
+<ul>
+<li>Avoid loops, conditions, recursion, and complexity in your tests</li>
+<li>Keep test code as <em>dumb</em> as possible because testing code is <em>code</em> and you make mistakes in code :)</li>
+</ul>
+</div></p></li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+<strong>Regression test</strong><div class="ulist">
+<ul>
+<li>What&#8217;s the first thing you do when a defect is reported? Write the smallest possible test that fails and that, once run, will be repaired</li>
+</ul>
+</div></p></li>
+</ul>
+</div>
+</section>
+<section class="slide" id="_the_tdd_principles_5">
+<h2>The TDD principles</h2>
+<div class="ulist">
+<ul>
+<li class="slide"><p>
+<strong>Break</strong><div class="ulist">
+<ul>
+<li>What do you do when you feel tired or stuck? Take a break :)</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+<strong>Do over</strong><div class="ulist">
+<ul>
+<li>What do you do when you are feeling losr? Throw away the code and start over</li>
+</ul>
+</div></p></li>
+</ul>
+</div>
+<section class="slide" id="_conclusion">
+<h2>Conclusion</h2>
+<div class="ulist">
+<ul>
+<li><p>
+TDD promises confidence for us as developers<div class="ulist">
+<ul>
+<li>Green bar gives confidence</li>
+<li>Failing tests will tell you exactly where to look</li>
+<li>We dare to refactor and experiment because tests tell us if our ideas are good :)</li>
+<li>We have taken small steps, so getting back is easy and not as costly</li>
+</ul>
+</div></p></li>
+<li><p>
+Reliability<div class="ulist">
+<ul>
+<li>Code that is tested by good test cases is <em>much better</em> than code that is not</li>
+<li>It is a <em>reflected practice</em> instead of <em>devine inspiration</em> and <em>black magic</em> :)</li>
+</ul>
+</div></p></li>
+</ul>
+</div>
+</section>
+</section>
+<section class="slide" id="_systematic_testing">
+<h2>Systematic testing</h2>
+<div class="paragraph"><p>Systematic testing is a planned systematic process with the explicit goal of finding defects in some well-defined part of the system</p></div>
+</section>
+<section class="slide" id="_white_box_testing">
+<h2>White-box testing</h2>
+<div class="paragraph"><p><strong>Definition:</strong> The full implementation of the <em>unit under test</em> (UUT) is known, so the actual code can be inspected in order to generate test cases.</p></div>
+<div class="paragraph"><p>We can make use of coverage tools, like jacoco, to check if all relevant coverage conditions has been tested.</p></div>
+<div class="imageblock">
+<div class="content">
+<img alt="coverage" src="coverage.png">
+</div>
+</div>
+</section>
+<section class="slide" id="_black_box_testing">
+<h2>Black-box testing</h2>
+<div class="paragraph"><p><strong>Definition:</strong> The <em>unit under test</em> (UUT) is treated as a black box. The only knowledge we have to gude our testing effort is the specification of the UUT and a general knowledge of common programming techniques, algorithmic constructs, and common mistakes made by programmers.</p></div>
+<div class="paragraph"><p>We have two black box techniques, that follows the TDD principle <em>Representative Data</em>:</p></div>
+<div class="ulist">
+<ul>
+<li>Equevalence class partitioning</li>
+<li>Boundry value analysis</li>
+</ul>
+</div>
+</section>
+<section class="slide" id="_equevalence_class">
+<h2>Equevalence class</h2>
+<div class="paragraph"><p><strong>Definition:</strong> A subset of all possible inputs to the UUT that has the property that if one element in the subset demonstrates a defect during testing, then we assume that all other elements in the subset will demonstrate the same defect.</p></div>
+<section class="slide" id="_imagine_we_need_to_find_test_cases_for_math_abs_x">
+<h2>Imagine we need to find test cases for Math.abs(x)</h2>
+<div class="paragraph"><p>Math.abs(x): Absolute value of x</p></div>
+<div class="paragraph"><p>Will these 5 test cases ensure a reliable implementation?</p></div>
+<table class="tableblock frame-all grid-all" style="width:100%">
+<caption class="title">Table 1. Unit under test: Math.abs</caption>
+<colgroup>
+<col style="width:50%">
+<col style="width:50%">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Input</th>
+<th class="tableblock halign-left valign-top">Expected output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x = 37</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">37</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x = 38</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">38</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x = 39</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">39</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x = 40</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">40</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="slide" id="_is_the_input_representative">
+<h2>Is the input representative?</h2>
+<div class="ulist">
+<ul>
+<li>what is the probability that x=38 will find a defect that x=37 did not expose?</li>
+<li>what is the probability that there will be a defect in handling negative x?</li>
+</ul>
+</div>
+</section>
+</section>
+<section class="slide" id="_always_use_representative_data_in_test_cases">
+<h2>Always use representative data in test cases</h2>
+<div class="ulist">
+<ul>
+<li>We can find a single input value that represents a large set of values!</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img alt="EC" src="ec1.png">
+</div>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%">
+<caption class="title">Table 2. Unit under test: Math.abs</caption>
+<colgroup>
+<col style="width:50%">
+<col style="width:50%">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Input</th>
+<th class="tableblock halign-left valign-top">Expected output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x = 37</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">37</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x = -47</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">47</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="slide" id="_good_rules_to_remember_when_creating_tests">
+<h2>Good rules to remember when creating tests</h2>
+<div class="ulist">
+<ul>
+<li><strong>Coverage:</strong> Every possible input element belongs to at least one of the equivalence classes</li>
+<li><strong>Representation:</strong> If a defect is demonstrated on a particular member of an equivalence classes, the same defect is assumed to be demonstrated by any other member of the class</li>
+</ul>
+</div>
+<section class="slide" id="_some_input_values_will_make_an_algorithm_give_up_or_crash_your_system">
+<h2>Some input values will make an algorithm give up, or crash your system</h2>
+<div class="paragraph"><p>Sqrt(0), file.open("nonexistingfile"), division(0), exceptions, etc.</p></div>
+<div class="ulist">
+<ul>
+<li>Input values that leads to abnormal processing/giving up we classify as belonging to <strong>invalid ECs</strong></li>
+<li>Those input values that process normally we say belong to <strong>valid ECs</strong></li>
+</ul>
+</div>
+</section>
+<section class="slide" id="_ranges_sets_booleans">
+<h2>Ranges, Sets, Booleans</h2>
+<div class="ulist">
+<ul>
+<li><strong>Range:</strong> If a condition is specified as a range of values, select one valid EC that covers the allowed range, and two invalid ECs, one above and one below the range</li>
+<li><strong>Set:</strong> If a condition is specified as a set of values, then define an EC for each value in the set and one EC containing all elements outside the set</li>
+<li><strong>Boolean:</strong> If a condition is specified as a boolean condition, then define one EC for the condition being <em>true</em> and one EC for the condition being <em>false</em></li>
+</ul>
+</div>
+</section>
+</section>
+<section class="slide" id="_boundry_value_analysis">
+<h2>Boundry value analysis</h2>
+<div class="paragraph"><p>Experience shows that test cases focusing on boundary conditions have high payoff</p></div>
+<div class="ulist">
+<ul>
+<li><p>
+Some that spring into my mind is<div class="ulist">
+<ul>
+<li>iteration over an array at its max size</li>
+<li><p>
+”off by one” errors in comparisons<div class="ulist">
+<ul>
+<li>if ( x &lt; = MAX_SIZE ) and not if ( x &lt; MAX_SIZE )</li>
+</ul>
+</div></p></li>
+<li>null as value for a reference/pointer</li>
+</ul>
+</div></p></li>
+</ul>
+</div>
+<div class="paragraph"><p><strong>Definition:</strong> A boundry value is an element that lies right on or next to the edge of an equivalance class</p></div>
+</section>
+<section class="slide" id="_test_doubles">
+<h2>Test doubles</h2>
+<div class="paragraph"><p><strong>Stubs, Spies, and Fake Objects</strong></p></div>
+<section class="slide" id="_motivation">
+<h2>Motivation</h2>
+<div class="paragraph"><p>Thorough testing requires objects to be tested in isolation to create a harness/environment where defects/complexity in other objects do not invalidate/complicate our testing.</p></div>
+<div class="imageblock">
+<div class="content">
+<img alt="Driver" src="driver.png">
+</div>
+</div>
+</section>
+</section>
+<section class="slide" id="_test_doubles_2">
+<h2>Test Doubles</h2>
+<div class="paragraph"><p><strong>Definition:</strong></p></div>
+<div class="ulist">
+<ul>
+<li>Placeholder class until I get around to implement it properly</li>
+<li><strong>TDD:</strong> temporary test stub = minimal compilable code</li>
+<li><p>
+<em>Superclass</em> Test Double<div class="ulist">
+<ul>
+<li><strong>SUT</strong> System under test or <strong>UUT</strong> Unit under test</li>
+<li><strong>DOC</strong> Depended-on Component or <strong>DOU</strong> Depended-on Unit</li>
+</ul>
+</div></p></li>
+<li><p>
+Why use them?<div class="ulist">
+<ul>
+<li>Slow tests</li>
+<li><p>
+DOU is:<div class="ulist">
+<ul>
+<li><strong>not available</strong> (not developed yet)</li>
+<li><strong>not under test control</strong> (basically all integration points, e.g. Databases, REST APIs, etc.)</li>
+<li><strong>has side-effects</strong> (contaminates database, sets off an alarm, etc.)</li>
+<li><strong>can throw exceptions which are otherwise hard to provoke</strong></li>
+</ul>
+</div></p></li>
+</ul>
+</div></p></li>
+</ul>
+</div>
+</section>
+<section class="slide" id="_classification">
+<h2>Classification</h2>
+<div class="imageblock">
+<div class="content">
+<img alt="TestDoubles" src="testdoubles.png">
+</div>
+</div>
+</section>
+<section class="slide" id="_test_stubs">
+<h2>Test Stubs</h2>
+<div class="paragraph"><p>How can we verify logic independently when it depends on indirect inputs from other software components?</p></div>
+<div class="paragraph"><p><strong>We replace a real object with a test-specific object that feeds the desired indirect inputs into the system under test in order to have control of the DOU return data.</strong></p></div>
+<div class="imageblock slide">
+<div class="content">
+<img alt="TestStubs" src="teststub2.png">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li class="slide"><strong>Focus on indirect input</strong></li>
+<li class="slide"><p>
+<strong>When to use Test Stubs?</strong><div class="ulist">
+<ul>
+<li>When the DOU is not developed yet (Often used in TDD in order to keep focus)</li>
+<li>When the DOU is not under test control (E.g. integration points like REST APIs and Databases.)</li>
+<li>When we want to test how the UUT reacts to specific return data from the DOU (E.g. clocks, temperatures, alarms, etc.)</li>
+<li>When we want to test how the UUT reacts to different exceptions thrown by the DOU</li>
+</ul>
+</div></p></li>
+<li class="slide">These are all examples of indirect input to the UUT</li>
+</ul>
+</div>
+</section>
+<section class="slide" id="_test_spy">
+<h2>Test Spy</h2>
+<div class="paragraph"><p>How do we implement Behavior Verification?</p></div>
+<div class="paragraph"><p>How can we verify logic independently when it has indirect outputs to other software components?</p></div>
+<div class="paragraph"><p><strong>Use a Test Double to capture the indirect output calls made to another component by the unit under test (UUT) for later verification by the test.</strong></p></div>
+<div class="imageblock slide">
+<div class="content">
+<img alt="TestSpys" src="testspy2.png">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li class="slide"><strong>Focus on indirect output</strong></li>
+<li class="slide"><p>
+<strong>When to use Test Spy?</strong><div class="ulist">
+<ul>
+<li>When we want to record/log how the UUT interacts with the DOU</li>
+<li>When we want to verify that the UUT makes the correct calls in the right order to the DOU</li>
+<li>When we don&#8217;t think a Mock Object is sufficiently intent-revealing, or we simply don&#8217;t have a mock framework available</li>
+</ul>
+</div></p></li>
+<li class="slide"><strong>This allows us to do behaviour verificaiton in our test driver</strong></li>
+</ul>
+</div>
+</section>
+<section class="slide" id="_fake_object">
+<h2>Fake Object</h2>
+<div class="paragraph"><p>How can we verify logic independently when depended-on objects cannot be used?</p></div>
+<div class="paragraph"><p>How can we avoid Slow Tests?</p></div>
+<div class="paragraph"><p><strong>Replace a component that the unit under test (UUT) depends on with a much lighter-weight implementation.</strong></p></div>
+<div class="imageblock slide">
+<div class="content">
+<img alt="FakeObj" src="fakeobject2.png">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li class="slide"><strong>Implements light-weight semi-realistic behaviour</strong></li>
+<li class="slide"><p>
+<strong>When to use Fake Objects?</strong><div class="ulist">
+<ul>
+<li>When the UUT depends on other components which makes testing difficult or slow</li>
+<li>When the tests need complex sequences of behavior than is worth implementing in a Test Stub or Mock Object</li>
+<li>If we need to control either the indirect inputs or indirect outputs of the UUT, we should probably be using a Mock Object or Test Stub instead</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+<strong>Some specific situations where we replace the real component with a Fake Object are:</strong><div class="ulist">
+<ul>
+<li>Fake Database, In-Memory Database (e.g. H2), Fake Web Service,  Fake Service Layer</li>
+</ul>
+</div></p></li>
+</ul>
+</div>
+</section>
+<section class="slide" id="_mock_object">
+<h2>Mock Object</h2>
+<div class="paragraph"><p>How do we implement Behavior Verification for indirect outputs of the UUT?</p></div>
+<div class="paragraph"><p>How can we verify logic independently when it depends on indirect inputs from other software components?</p></div>
+<div class="paragraph"><p><strong>Replace an object the unit under test (UUT) depends on with a test-specific object that verifies it is being used correctly by the UUT.</strong></p></div>
+<div class="imageblock slide">
+<div class="content">
+<img alt="MockObj" src="mockobject2.png">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li class="slide"><strong>Focus on indirect output</strong></li>
+<li class="slide"><p>
+<strong>When to use Mock Objects?</strong><div class="ulist">
+<ul>
+<li>We can use a Mock Object as an observation point when we need to do Behavior Verification (Much like a Spy, but where verification is specified in the Mock Object)</li>
+<li>When we want to verify that the UUT makes the correct calls in the right order and with the correct parametrs to the DOU</li>
+</ul>
+</div></p></li>
+<li class="slide"><strong>Often Mock frameworks use Mock Objects to test on indirect input, in this case the Mock is actually behaving like a Test Stub rather than a Mock Object</strong></li>
+</ul>
+</div>
+</section>
+<section class="slide" id="_test_doubles_summary">
+<h2>Test Doubles Summary</h2>
+<div class="ulist">
+<ul>
+<li><p>
+Testing units in isolation is important<div class="ulist">
+<ul>
+<li>unit and integration testing</li>
+<li>test-driven development</li>
+</ul>
+</div></p></li>
+<li><p>
+Units have more inputs and outputs than visible from the parameter list and instances variables<div class="ulist">
+<ul>
+<li>especially true in object-oriented programming</li>
+<li>indirect inputs: data from DOUs to the UUT</li>
+<li>indirect output: data to DOUs from the UUT</li>
+</ul>
+</div></p></li>
+</ul>
+</div>
+<div class="paragraph"><p><strong>Test Doubles</strong> allow you to get access to, inspect, and verify indirect input and output</p></div>
+<div class="ulist">
+<ul>
+<li><strong>Stub:</strong> focus on indirect input</li>
+<li><strong>Spy:</strong>  focus on indirect output (record/verify)</li>
+<li><strong>Fake object:</strong> light-weight semi-realistic behaviour</li>
+<li><p>
+<strong>Mock:</strong> focus on indirect output (fail fast)<div class="ulist">
+<ul>
+<li>frameworks to generate doubles dynamically</li>
+</ul>
+</div></p></li>
+</ul>
+</div>
+</section>
+<section class="slide" id="_conclusion_2">
+<h2>Conclusion</h2>
+<div class="paragraph"><p>In order to make your software more flexible and reliable</p></div>
+<div class="ulist">
+<ul>
+<li>Make the TDD rythm and TDD principle a part of your development life-cycle</li>
+<li>Make use of both white-box and black-box testing</li>
+<li>Make sure your test data is representative by thinking in equivalance classes</li>
+<li>Make sure to test data boundries</li>
+<li><strong>Test both valid and invalid equivalance classes</strong>, <em>do not only test the happy path</em></li>
+<li>Make use of test doubles in order to test software units in isolation</li>
+<li>And finally&#8230;&#8203;</li>
+</ul>
+</div>
+<section class="slide" id="_testing_shows_the_presence_not_the_absence_of_bugs">
+<h2>Testing shows the presence, not the absence of bugs</h2>
+<div class="ulist">
+<ul>
+<li><p>
+Some resources:<div class="ulist">
+<ul>
+<li><em>Test doubles</em> <a class="bare" href="http://xunitpatterns.com/Test%20Double%20Patterns.html">http://xunitpatterns.com/Test%20Double%20Patterns.html</a></li>
+<li><em>Martin Fowler</em> <a class="bare" href="http://martinfowler.com/articles/mocksArentStubs.html">http://martinfowler.com/articles/mocksArentStubs.html</a></li>
+<li><em>Spock Github</em> <a class="bare" href="https://github.com/spockframework/spock">https://github.com/spockframework/spock</a></li>
+<li><em>Spock Wikis</em>  <a class="bare" href="https://code.google.com/p/spock/w/list">https://code.google.com/p/spock/w/list</a></li>
+<li><em>Spock Handbook</em> <a class="bare" href="https://leanpub.com/spockframeworknotebook/read">https://leanpub.com/spockframeworknotebook/read</a></li>
+</ul>
+</div></p></li>
+</ul>
+</div>
+</section>
+</section>
+<section class="slide" id="_mockito_vs_spock">
+<h2>Mockito vs. Spock</h2>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint java language-java"><code>@Test
+public void shouldFetchWeatherForecastFromGlobalServiceIfNotAvailableLocally() {
+    WeatherService localWeatherService = Mockito.mock(WeatherService.class); <b class="conum">(1)</b>
+    WeatherService globalWeatherService = Mockito.mock(WeatherService.class);
+
+    WeatherForecast forecast = new WeatherForecast(globalWeatherService, localWeatherService); <b class="conum">(2)</b>
+
+    Mockito.when(localWeatherService.hasForecastFor(anyString())) <b class="conum">(3)</b>
+           .thenReturn(false);
+
+    Weather forecastedWeather = new Weather();
+
+    Mockito.when(globalWeatherService.getWeather(anyString()))
+           .thenReturn(forecastedWeather);
+
+    Weather weather = forecast.getForecast("myCity");
+
+    verify(localWeatherService, times(1)).hasForecastFor(anyString())); <b class="conum">(4)</b>
+    verify(globalWeatherService, times(1)).getWeather(anyString());
+
+    assertThat(weather).isSameAs(forecastedWeather); <b class="conum">(5)</b>
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Setup mocks</p>
+</li>
+<li>
+<p>UUT</p>
+</li>
+<li>
+<p>Setup rules for the mock</p>
+</li>
+<li>
+<p>Verify invocations and parameters</p>
+</li>
+<li>
+<p>Assertion</p>
+</li>
+</ol>
+</div>
+</section>
+<section class="slide" id="_continued">
+<h2>continued</h2>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint java language-java"><code>void "Should fetch weather forecast from global service if not available locally"() {
+    given:
+    WeatherService localWeatherService = Mock(WeatherService) <b class="conum">(1)</b>
+    WeatherService globalWeatherService = Mock(WeatherService)
+    def forecast = new WeatherForecast(globalWeatherService, localWeatherService) <b class="conum">(2)</b>
+    def forecastedWeather = new Weather()
+
+    when:
+    Weather weather = forecast.getForecast("myCity")
+
+    then:
+    1 * localWeatherService.hasForecastFor(_ as String) &gt;&gt; false <b class="conum">(3)</b>
+    1 * globalWeatherService.getWeather(_ as String) &gt;&gt; forecastedWeather
+
+    and:
+    weather == forecastedWeather <b class="conum">(4)</b>
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Setup mocks</p>
+</li>
+<li>
+<p>UUT</p>
+</li>
+<li>
+<p>Setup rules and verify invocations and parameters</p>
+</li>
+<li>
+<p>Assertion</p>
+</li>
+</ol>
+</div>
+</section>
+<section class="slide" id="_the_spock_testing_framework">
+<h2>The Spock Testing Framework</h2>
+<div class="paragraph"><p><strong>Demo</strong></p></div>
+</section>
+</div>
+<script src="deck.js/jquery.min.js"></script>
+<script src="deck.js/core/deck.core.js"></script>
+<script src="deck.js/extensions/scale/deck.scale.js"></script>
+<script src="deck.js/extensions/menu/deck.menu.js"></script>
+<script>
+  (function($, deck, undefined) {
+    $.deck.defaults.keys['previous'] = [8, 33, 37, 39];
+    $.deck.defaults.keys['next'] = [13, 32, 34, 39];
+  
+    $.extend(true, $[deck].defaults, {
+        countNested: false
+    });
+  
+    $.deck('.slide');
+  })(jQuery, 'deck');
+</script>
+<style>
+  .slide.canvas-image {
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: -moz-box;
+  display: -webkit-box;
+  display: -ms-box;
+  display: box;
+  -moz-box-orient: vertical;
+  -webkit-box-orient: vertical;
+  -ms-box-orient: vertical;
+  box-orient: vertical;
+  -moz-box-align: start;
+  -webkit-box-align: start;
+  -ms-box-align: start;
+  box-align: start;
+  -moz-box-pack: start;
+  -webkit-box-pack: start;
+  -ms-box-pack: start;
+  box-pack: start;}
+  
+  .bottom-left {
+    left: 1%;
+    bottom: 20%; }
+  
+  .top-left {
+    left: 1%;
+    top: 20%; }
+  
+  .bottom-right {
+    right: 1%;
+    bottom: 20%; }
+  
+  .top-right {
+    right: 1%;
+    top: 20%; }
+  
+  .center-up {
+    right: 50%;
+    top: 1%;
+  }
+  
+  .center-down {
+    right: 50%;
+    bottom: 1%;
+  }
+  .canvas-image .canvas-caption p {
+    text-align: center;
+    padding-top: 0;
+    padding: 0;
+    -moz-transform: none;
+    -webkit-transform: none;
+    -o-transform: none;
+    -ms-transform: none;
+    transform: none;
+    display: inline;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+    font-size: 58px;
+    -webkit-box-shadow: 2px 2px 2px #000;
+    -moz-box-shadow: 2px 2px 2px #000;
+    box-shadow: 2px 2px 2px #000;
+    padding: 1rem;
+    color: white; }
+  kbd.keyseq { color: #555555; }
+  kbd:not(.keyseq) {
+    display: inline-block;
+    color: #222222;
+    font-size: 0.7em;
+    line-height: 1.4;
+    background-color: #F7F7F7;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px white inset;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px white inset;
+    margin: -0.15em 0.15em 0 0.15em;
+    padding: 0.2em 0.6em;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  kbd kbd:first-child { margin-left: 0; }
+  kbd kbd:last-child { margin-right: 0; }
+</style>
+</body>
+</html>

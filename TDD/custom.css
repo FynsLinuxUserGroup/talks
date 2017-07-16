@@ -1,0 +1,34 @@
+table {
+	border: 1px solid #000000;
+	background-color: #ffffff;
+	margin: 1em 0 1em 0;
+	font-size: 0.7em;
+}
+table thead, table tfoot {
+	text-align: left;
+	font-weight: bold;
+}
+table.grid-all th.tableblock, table.grid-all td.tableblock {
+    border-width: 0 1px 1px 0;
+}
+table thead tr th, table tfoot tr th, table tbody tr td, table tr td, table tfoot tr td {
+    display: table-cell;
+    line-height: 1.6;
+}
+table thead tr th, table thead tr td, table tfoot tr th, table tfoot tr td {
+    color: #222;
+    font-size: inherit;
+    padding: 0.5em 0.625em 0.625em;
+    text-align: left;
+}
+table.tableblock {
+    border-collapse: separate;
+}
+table.tableblock, th.tableblock, td.tableblock {
+    border: 1px solid #000000;
+}
+table tr th, table tr td {
+    color: #222;
+    font-size: inherit;
+    padding: 0.5625em 0.625em;
+}
