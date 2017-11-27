@@ -1,1 +1,3 @@
-# FLUG Talks
+= FLUG Talks
+
+This repository contains the talks held at FLUG meetups.
