@@ -1,0 +1,36 @@
+= Embracing failure with Circuit Breaker Hystrix
+:revealjs_theme: night
+:revealjs_history: true
+:revealjs_transition: convex
+Jimmi Kristensen
+
+== Stepped paragraphs
+
+[%step]
+This paragraph is displayed first.
+
+[%step]
+Then this paragraph is displayed when the _Next_ arrow is clicked.
+
+== Stepped list items
+
+test
+
+=== Test
+
+[%step]
+* A bullet is displayed each time the _Next_ arrow is clicked.
+* B
+* C
+
+== Stepped blocks
+
+[%step]
+--
+Block one
+--
+
+[%step]
+--
+Block two
+--
