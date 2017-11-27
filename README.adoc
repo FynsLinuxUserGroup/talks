@@ -1,3 +1,12 @@
 = FLUG Talks
 
 This repository contains the talks held at FLUG meetups.
+
+== Presentations
+
+The presentations are in asciidoc format transformed to some format suitable for presentation - most often HTML.
+
+*Two ways of transforming the asciidoc presentations:*
+
+* *Using the deckjs backend:* http://asciidoctor.org/docs/install-and-use-deckjs-backend/
+* *Using the revealjs backend:* https://github.com/asciidoctor/asciidoctor-reveal.js/#basic-presentation-with-speaker-notes
