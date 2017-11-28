@@ -2,9 +2,19 @@
 :revealjs_theme: night
 :revealjs_history: true
 :revealjs_transition: convex
-Jimmi Kristensen
+Jimmi Kristensen - @jimmibk
 
 == Stepped paragraphs
+
+* Quality Attributes
+* Distribueret software, hvad kan gå galt? Release it.
+* Normal circuit breaker diagram
+** Hystrix CB diagram
+* Hystrix dashboard?
+* Forklaring på hystrix commands wrapper
+** Tråde? Thread contention?
+* Diagram over demo app
+
 
 [%step]
 This paragraph is displayed first.
