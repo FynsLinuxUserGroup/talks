@@ -62,6 +62,15 @@ image::queue-cartoon.jpg[queue,700]
 
 image::LittlesLaw.png[littleslaw,700]
 
+== Create bulkheads in your software
+
+* Message queues
+* Asynchronous communication
+* Never trust default timeouts
+
+image::bulkheads.jpg[bulkheads, 500]
+
+== And Circuit Breakers
 
 * Quality Attributes
 * Distribueret software, hvad kan gå galt? Release it.
