@@ -4,7 +4,52 @@
 :revealjs_transition: convex
 Jimmi Kristensen - @jimmibk
 
-== Stepped paragraphs
+== Monolith Application
+
+Splitting up a monolith is difficult
+
+* Defining bounded contexts
+* Defining interfaces between new microservices
+* Architecture without transactions
+* Asynchronous execution
+* The list goes on...
+
+[%notitle]
+=== My own experience
+
+Many developers (at least the ones I have spoken to) are not experienced in developing highly distributed systems.
+
+Microservices are developed as if it is still a monolith.
+
+Network communication is handled like method calls in the monolith.
+
+This is however very far from reality. Many more moving parts with the added complexity of network is a failure waiting to happen unless handled properly.
+
+[%notitle]
+=== Monolith
+
+image::Monolith.png[monolith,700]
+
+[%notitle]
+=== Monolith
+
+image::Microservices.png[microservice,700]
+
+[%notitle]
+=== Monolith
+
+image::Dyingmicroservices.png[microservice-dying,700]
+
+=== How big should our thread pool be?
+
+Little’s law says that the number of requests in a system equals the rate at which they arrive, multiplied by the average amount of time it takes to service an individual request.
+
+image::queue-cartoon.jpg[queue,700]
+
+=== Little's Law
+
+image::LittlesLaw.png[littleslaw,700]
+
 
 * Quality Attributes
 * Distribueret software, hvad kan gå galt? Release it.
