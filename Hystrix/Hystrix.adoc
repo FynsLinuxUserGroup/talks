@@ -40,6 +40,18 @@ image::Microservices.png[microservice,700]
 
 image::Dyingmicroservices.png[microservice-dying,700]
 
+=== What can go wrong?
+
+* Slow Response
+* Blocked Threads
+* Cascading Failure
+
+=== Thread Contention
+
+Slow response -> Blocked threads -> Thread contention -> Cascading failure
+
+image::tread_contention.png[thread]
+
 === How big should our thread pool be?
 
 Little’s law says that the number of requests in a system equals the rate at which they arrive, multiplied by the average amount of time it takes to service an individual request.
