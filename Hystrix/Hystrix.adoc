@@ -2,7 +2,7 @@
 :revealjs_theme: night
 :revealjs_history: true
 :revealjs_transition: convex
-Jimmi Kristensen - @jimmibk
+Jimmi Kristensen (@jimmibk)
 
 == Monolith Application
 
@@ -43,6 +43,7 @@ image::Dyingmicroservices.png[microservice-dying,700]
 === What can go wrong?
 
 * Slow Response
+** A slow response is worse than no response!
 * Blocked Threads
 * Cascading Failure
 
@@ -72,41 +73,45 @@ image::bulkheads.jpg[bulkheads, 500]
 
 == And Circuit Breakers
 
-* Quality Attributes
-* Distribueret software, hvad kan gå galt? Release it.
-* Normal circuit breaker diagram
-** Hystrix CB diagram
-* Hystrix dashboard?
-* Forklaring på hystrix commands wrapper
-** Tråde? Thread contention?
-* Diagram over demo app
+A simple circuit breaker
 
+image::SimpleCircuitBreaker.png[scb,700]
 
-[%step]
-This paragraph is displayed first.
+=== The Hystrix Circuit Breaker
 
-[%step]
-Then this paragraph is displayed when the _Next_ arrow is clicked.
+image::hystrix-command-flow-chart.png[hystrixcb]
 
-== Stepped list items
+=== Circuit Breaker Work Flow
 
-test
+image::circuit-breaker-1280.png[hystflow,750]
 
-=== Test
+=== Hystrix Dashboard
 
-[%step]
-* A bullet is displayed each time the _Next_ arrow is clicked.
-* B
-* C
+image::dashboard-annoted-circuit-640.png[hystdash]
 
-== Stepped blocks
+=== Monitoring a cluster
 
-[%step]
---
-Block one
---
+image::dashboard-direct-vs-turbine-640.png[hystcluster]
 
-[%step]
---
-Block two
---
+=== Cluster Example
+
+image::dashboard-example-1280.png[hystclusterexample]
+
+== Demo Application
+
+image::HystrixPrototype.png[demoapp,700]
+
+[%notitle]
+=== Sequences
+
+image::sequence.png[seq,600]
+
+== Great book about Software Stability
+
+image::mnee2.jpg[demoapp,400]
+
+== Resources
+
+* How Hystrix Works: https://github.com/Netflix/Hystrix/wiki/How-it-Works
+* Hystrix Prototype Application: https://github.com/jimmikristensen/hystrix-prototype
+* FLUG Presentations: https://github.com/FynsLinuxUserGroup/talks
